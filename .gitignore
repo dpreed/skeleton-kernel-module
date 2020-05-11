@@ -1,0 +1,12 @@
+*.o
+*.ko
+*.mod
+*.mod.c
+*~
+*.cmd
+Module.symvers
+modules.order
+export_syms
+machine
+x86
+
