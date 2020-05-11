@@ -1,9 +1,8 @@
-/* define MNAME in make file to be module name */
-#define MSTR2(n) #n
-#define MSTR1(n) MSTR2(n)
-#define MSTR MSTR1(MNAME)
-#define MPRE2(n,s) n ## s
-#define MPRE1(n, s) MPRE2(n, s)
-#define MPRE(s) MPRE1(MNAME, s)
-int MPRE(_init)(void);
-void MPRE(_fini)(void);
+#define _STRINGIFY(name) #name
+#define STRINGIFY(name) _STRINGIFY(name)
+
+#define __MSTR__ STRINGIFY(__M__)
+#define __MAUTHOR__ "David P. Reed <dpreed@deepplum.com>"
+
+int common_init(void);
+void common_fini(void);

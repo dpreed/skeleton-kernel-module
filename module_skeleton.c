@@ -7,14 +7,14 @@
 
 // entry function
 static int __init onload(void) {
-	printk(KERN_INFO MSTR " initialized\n"); // print to /var/log/syslog
-	return MPRE(_init)();
+	printk(KERN_INFO __MSTR__ " initialized\n"); // print to /var/log/syslog
+	return common_init();
 }
 
 // exit function
 static void __exit onunload(void) {
-	MPRE(_fini)();
-	printk(KERN_INFO MSTR " unloaded\n");
+	common_fini();
+	printk(KERN_INFO __MSTR__ " unloaded\n");
 }
 
 // register entry/exit point functions
@@ -23,6 +23,6 @@ module_exit(onunload);
 
 // module metadata
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("David P. Reed <dpreed@deeplum.com>");
-MODULE_DESCRIPTION("A simple skeleton for a loadable Linux kernel module");
+MODULE_AUTHOR(__MAUTHOR__);
+MODULE_DESCRIPTION("Linux kernel module named " __MSTR__);
 
